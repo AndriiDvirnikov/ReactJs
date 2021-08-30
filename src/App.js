@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Characters from './component/Characters';
+import FilterStatus from './component/FilterStatus';
+import Menu from './component/Menu';
+import {BrowserRouter as Router} from 'react-router-dom';
+import EpisodePage from './component/pages/EpisodsPage';
+import CharactersPage from './component/pages/CharactersPage';
 
 function App() {
   const [items, setItems] = useState(null);
   const [url, setUrl] = useState("https://rickandmortyapi.com/api/character?page=");
   const [gender, setGender] = useState("");
+  
   
   useEffect(
     () => {
@@ -29,19 +36,35 @@ function App() {
   }
   function search(names) {
     if (gender === 'male') {
-      return names.filter(person => person.gender === "Male")
+      const genderFilter = names.filter(person => person.gender === "Male")
+      return genderFilter
     } else if (gender === 'female') {
-      return names.filter(person => person.gender === "Female")
+      const genderFilter = names.filter(person => person.gender === "Female")
+      return genderFilter
     } else return names
   }
+  
+
+
 
   return (
+    
     <div className="App">
-      <input type="radio" name="gender" value='all' onChange={(e) => setGender(e.target.value)} /> <label>All</label>
+      <Router>
+        <Menu/>
+        <Switch>
+          <Route path = '/characters' exact component={CharactersPage}/>
+          <Route path = '/episode' exact component={EpisodePage}/>
+        </Switch>
+      </Router>
+      <label>Gender:</label>
       <input type="radio" name="gender" value='male' onChange={(e) => setGender(e.target.value)} /> <label>Male</label>
       <input type="radio" name="gender" value='female' onChange={(e) => setGender(e.target.value)} /> <label>FeMale</label>
+      <input type="radio" name="gender" value='all' onChange={(e) => setGender(e.target.value)} /> <label>All</label>
+<br/>
+      
 
-      {items && <Characters persone={search(items.results)} />}
+      {items && <FilterStatus persone={search(items.results)} />}
       <button onClick={() => prev()}>Prev</button>
       <button onClick={() => next()}>Next</button>
       
