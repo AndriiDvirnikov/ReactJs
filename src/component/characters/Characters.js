@@ -12,11 +12,6 @@ export default function Characters({ persone }) {
             [index]:!persone[index]
         }));
     }
-
-    function changeShow() {
-        setShow(!show);
-    }
-
     return (
         <div>
             <ul>

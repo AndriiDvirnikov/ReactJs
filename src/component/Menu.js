@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
     return <ul>
         <li><Link to="/characters">Characters</Link> </li>
         <li><Link to="/episode">Episode</Link></li>
+        <li><Link to="/location">Location</Link></li>
     
     </ul>
 }
