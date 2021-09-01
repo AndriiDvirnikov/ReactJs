@@ -8,7 +8,7 @@ export default function DimensionFilter({ dimension }) {
         return dimen.filter((dim)=>dim.dimension.toLowerCase().indexOf(q)>-1);
        }
     return <div>
-        <label>DimensionType</label><input type="text" value={q} onChange={(e)=>setQ(e.target.value)}/>
+        <input placeholder="Enter dimension type" className="inp-class" type="text" value={q} onChange={(e)=>setQ(e.target.value)}/>
         <Location dimension={search(dimension)} /> 
     </div>
 }

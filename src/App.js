@@ -7,16 +7,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import EpisodePage from './pages/EpisodsPage';
 import CharactersPage from './pages/CharactersPage';
 import LocationPage from './pages/LocationPage'
+import Home from './pages/Home';
 function App() {
   return (
     <div className="App">
       <Router>
-        <Menu />
+      <Menu />
         <Switch>
           <Route path='/characters' exact component={CharactersPage} />
           <Route path='/episode' exact component={EpisodePage} />
           <Route path='/location' exact component={LocationPage} />
         </Switch>
+        
       </Router>
     </div>
   );

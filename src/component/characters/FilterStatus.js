@@ -19,11 +19,24 @@ export default function FilterStatus({ persone }) {
         return stat
     }
     return <div>
-        <label>Status:</label>
-        
-        <input type="radio" name="status" value='alive' onChange={(e) => setStatus(e.target.value)} /> <label>Alive</label>
-        <input type="radio" name="status" value='dead' onChange={(e) => setStatus(e.target.value)} /> <label>Dead</label>
-        <input type="radio" name="status" value='uknown' onChange={(e) => setStatus(e.target.value)} /> <label>Uknown</label>
+        <label class="rad-text">Status:</label>
+        <div className="radio-div">
+            <label class="rad-label">
+                <input type="radio" class="rad-input" name="status" value='alive' onChange={(e) => setStatus(e.target.value)} />
+                <div class="rad-design"></div>
+                <div class="rad-text">Alive</div>
+            </label>
+            <label class="rad-label">
+            <input type="radio" class="rad-input" name="status" value='dead' onChange={(e) => setStatus(e.target.value)} />
+                <div class="rad-design"></div>
+                <div class="rad-text">Dead</div>
+            </label>
+            <label class="rad-label">
+            <input type="radio" class="rad-input" name="status" value='uknown' onChange={(e) => setStatus(e.target.value)} />
+                <div class="rad-design"></div>
+                <div class="rad-text">Uknown</div>
+            </label>
+        </div>
         <Characters persone={statusPers(persone)} />
     </div>
 }

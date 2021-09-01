@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 import EpisodInfo from './EpisodInfo';
-export default function Episod ({episodes}){
-    const [show, setShow] = useState({});
-    const handleClick = (index)=>{
-        setShow(episodes=>({
-            ...episodes,
-            [index]:!episodes[index]
-        }));
-    }
-
+export default function Episod({ episodes }) {
+    
+    
+    const columns = episodes[0] && Object.keys(episodes[0]);
     return (
-        <div>
-            <ul>
-                {episodes.map((item,index) => (
-                    < li key={item.id} onClick={()=>handleClick(index)}>{item.name}{show[index] ? <EpisodInfo props={item}/> : ''} </li>
-                ))}
-            
-            </ul >
-        </div>
+        
+            <table cellPadding={0} cellSpacing={0}>
+                <thead>
+                    <tr>{episodes[0] && columns.map((heading) => <th key={heading.id}>{heading}</th>)}</tr>
+                </thead>
+                <tbody>
+
+                    {episodes.map((item) => (
+                        <EpisodInfo info={item} columns={columns}/>
+                    ))}
+                </tbody>
+
+
+            </table >
+        
     )
 }

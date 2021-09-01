@@ -1,6 +1,23 @@
 import React, { useState } from 'react'
+import styled from 'styled-components';
 import Info from './Info';
+const CharactersHold = styled.ul `
+display:flex;
+flex-wrap:wrap;
+flex-direction:column;
+align-content: center;
+`
+const CharactersList = styled.li `
+width: 65%;
+display: flex;
 
+img{
+    width:185px;
+    heigh:100%;
+    margin: 0 10px 5px 0;
+   
+}
+`
 
 
 export default function Characters({ persone }) {
@@ -14,12 +31,12 @@ export default function Characters({ persone }) {
     }
     return (
         <div>
-            <ul>
+            <CharactersHold>
                 {persone.map((item,index) => (
-                    < li key={item.id} onClick={()=>handleClick(index)}>{item.name}{show[index] ? <Info props={item}/> : ''} </li>
+                    < CharactersList key={item.id} onClick={()=>handleClick(index)}><img src={item.image} alt={item.name} />{show[index] ? <Info props={item}/> : ''} </CharactersList>
                 ))}
             
-            </ul >
+            </CharactersHold >
         </div>
     )
 }

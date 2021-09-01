@@ -8,15 +8,20 @@ export default function Location ({dimension}){
             [index]:!dimension[index]
         }));
     }
-
+    const columns = dimension[0] && Object.keys(dimension[0]);
     return (
-        <div>
-            <ul>
-                {dimension.map((item,index) => (
-                    < li key={item.id} onClick={()=>handleClick(index)}>{item.name}{show[index] ? <LocationInfo props={item}/> : ''} </li>
-                ))}
-            
-            </ul >
-        </div>
+        <table cellPadding={0} cellSpacing={0}>
+        <thead>
+            <tr>{dimension[0] && columns.map((heading) => <th key={heading.id}>{heading}</th>)}</tr>
+        </thead>
+        <tbody>
+
+            {dimension.map((item) => (
+                <LocationInfo info={item} columns={columns}/>
+            ))}
+        </tbody>
+
+
+    </table >
     )
 }

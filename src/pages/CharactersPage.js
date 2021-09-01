@@ -1,5 +1,22 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 import FilterStatus from '../component/characters/FilterStatus';
+
+const Button = styled.button`
+color: #EE74E1;
+font-size: 1em;
+margin: 1em;
+padding: 0.25em 1em;
+border: 2px solid #FEE140;
+border-radius: 10px/40%;
+background-color: #FEE140;
+font-weight: 900;
+transition: all 330ms;
+&:hover{
+    background-color: #3EECAC;
+      color:#EE74E1;
+  }
+`;
 
 export default function CharactersPage() {
     const [items, setItems] = useState(null);
@@ -21,11 +38,7 @@ export default function CharactersPage() {
     }
 
     function prev() {
-        if (items.info.prev === null) {
-            setUrl(url + items.info.pages)
-        } else {
             setUrl(items.info.prev)
-        }
     }
 
     function search(names) {
@@ -40,14 +53,32 @@ export default function CharactersPage() {
 
     return (
         <div>
-            <label>Gender:</label>
-            <input type="radio" name="gender" value='male' onChange={(e) => setGender(e.target.value)} /> <label>Male</label>
-            <input type="radio" name="gender" value='female' onChange={(e) => setGender(e.target.value)} /> <label>FeMale</label>
-            <input type="radio" name="gender" value='all' onChange={(e) => setGender(e.target.value)} /> <label>All</label>
+
+            <label class="rad-text">Gender:</label>
+            <div className="radio-div">
+                <label class="rad-label">
+                <input type="radio" class="rad-input" name="gender" value='male' onChange={(e) => setGender(e.target.value)} /> 
+                    <div class="rad-design"></div>
+                    <div class="rad-text">Male</div>
+                </label>
+                <label class="rad-label">
+                <input type="radio" class="rad-input" name="gender" value='female' onChange={(e) => setGender(e.target.value)} />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">FeMale</div>
+                </label>
+                <label class="rad-label">
+                <input type="radio" class="rad-input" name="gender" value='all' onChange={(e) => setGender(e.target.value)} />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">All</div>
+                </label>
+            </div>
             <br />
             {items && <FilterStatus persone={search(items.results)} />}
-            <button onClick={() => prev()}>Prev</button>
-            <button onClick={() => next()}>Next</button>
+            <Button onClick={() => prev()}>Prev</Button>
+            <Button onClick={() => next()}>Next</Button> 
+
+
+
         </div>
     )
 }

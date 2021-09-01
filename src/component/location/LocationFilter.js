@@ -8,7 +8,7 @@ export default function LocationFilter({ location }) {
         return types.filter((type)=>type.type.toLowerCase().indexOf(q)>-1);
        }
     return <div>
-        <label>FilterType</label><input type="text" value={q} onChange={(e)=>setQ(e.target.value)}/>
+        <input placeholder="Enter type" className="inp-class" type="text" value={q} onChange={(e)=>setQ(e.target.value)}/>
         <DimensionFilter dimension={search(location)} /> 
     </div>
 }
