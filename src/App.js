@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import EpisodePage from './pages/EpisodsPage';
 import CharactersPage from './pages/CharactersPage';
 import LocationPage from './pages/LocationPage'
-import Home from './pages/Home';
+import  WhatchList from './pages/WhatchList'
 function App() {
   return (
     <div className="App">
@@ -17,6 +17,7 @@ function App() {
           <Route path='/characters' exact component={CharactersPage} />
           <Route path='/episode' exact component={EpisodePage} />
           <Route path='/location' exact component={LocationPage} />
+          <Route path='/whatchlist' exact component={WhatchList} />
         </Switch>
         
       </Router>

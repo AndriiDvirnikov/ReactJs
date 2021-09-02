@@ -33,10 +33,10 @@ a{
 
 function Menu() {
   return <MenuHold>
-    
     <MenuButton><Link to="/characters">Characters</Link> </MenuButton>
     <MenuButton><Link to="/episode">Episode</Link></MenuButton>
     <MenuButton><Link to="/location">Location</Link></MenuButton>
+    <MenuButton><Link to="/whatchlist">Whatch hList</Link></MenuButton>
   </MenuHold>
 }
 export default Menu
